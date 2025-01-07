@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderInput } from './inputs/create.order.input';
 import { AuthGuard } from '../auth/auth.guard';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 
 @UseGuards(AuthGuard)
 @ApiBearerAuth()
@@ -22,6 +22,7 @@ export class OrdersController {
   }
 
   @Post()
+  @ApiBody({ type: CreateOrderInput })
   async createOrder(@Body() order: CreateOrderInput) {
     return this.ordersService.createOrder(order);
   }

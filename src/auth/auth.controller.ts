@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginInput } from './inputs/login.input';
 import { CreateUserInput } from '../users/inputs/create.user.input';
 import { AuthGuard } from './auth.guard';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -22,6 +22,7 @@ export class AuthController {
 
   @ApiBearerAuth()
   @UseGuards(AuthGuard)
+  @ApiOperation({ summary: 'Muestra informacion sobre el usuario autenticado, como los roles' })
   @Get('profile')
   async getProfile(@Request() req) {
     return req.user;
