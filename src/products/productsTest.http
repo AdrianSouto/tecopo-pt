@@ -1,0 +1,30 @@
+
+GET localhost:3000/products?lowerLimit=200
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMjhiODI4OS1hYjI1LTRlY2EtYWY2My1mYjI1YWJlZjhiZDMiLCJ1c2VybmFtZSI6ImFkcmlhbiIsImlhdCI6MTczNjIyMTc2NSwiZXhwIjoxNzM2MjMyNTY1fQ.HoqD2d40UoLxQiHgtLGAd5OtKLq_suTUnpkYmk-6Ug8
+
+###
+POST localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "cafe",
+  "description": "200g",
+  "price": "100",
+  "stock": "23",
+  "category": "Bebidas"
+}
+
+###
+PATCH localhost:3000/products/582bb065-2959-40f1-b872-e6c215d98d75
+Content-Type: application/json
+
+{
+  "name": "cafe",
+  "description": "200g",
+  "price": "1200",
+  "stock": "25",
+  "category": "Bebidas"
+}
+
+###
+DELETE localhost:3000/products/582bb065-2959-40f1-b872-e6c215d98d75
