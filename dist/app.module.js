@@ -8,35 +8,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
 const typeorm_1 = require("@nestjs/typeorm");
 const products_module_1 = require("./products/products.module");
 const auth_module_1 = require("./auth/auth.module");
 const orders_module_1 = require("./orders/orders.module");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [users_module_1.UsersModule,
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5431,
-                username: 'postgres',
-                password: 'postgres',
-                database: 'tecopo',
-                entities: [__dirname + '/**/*.entity{.ts,.js}'],
-                synchronize: true,
+            typeorm_1.TypeOrmModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                inject: [config_1.ConfigService],
+                useFactory: async (configService) => {
+                    const options = {
+                        type: 'postgres',
+                        host: configService.get('DB_HOST') || 'localhost',
+                        port: configService.get('DB_PORT') || 5431,
+                        username: configService.get('DB_USER') || 'postgres',
+                        password: configService.get('DB_PASS') || 'postgres',
+                        database: configService.get('DB_NAME') || 'tecopo',
+                        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+                        synchronize: true,
+                    };
+                    return options;
+                },
             }),
             products_module_1.ProductsModule,
             auth_module_1.AuthModule,
-            orders_module_1.OrdersModule
-        ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+            orders_module_1.OrdersModule],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
