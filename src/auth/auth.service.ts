@@ -16,7 +16,7 @@ export class AuthService {
   async login(username: string, pass: string) {
     const user = await this.usersService.getUserByUsername(username);
     const isMatch = await compare(pass, user.password);
-    if (!isMatch) throw new Error('Invalid password');
+    if (!isMatch) throw new UnauthorizedException('Invalid credentials');
 
     const payload = { sub: user.id, username: user.name, roles: user.isAdmin? [Role.Admin] : [Role.User] };
     return {

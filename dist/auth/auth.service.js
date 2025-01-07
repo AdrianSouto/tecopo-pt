@@ -24,7 +24,7 @@ let AuthService = class AuthService {
         const user = await this.usersService.getUserByUsername(username);
         const isMatch = await (0, bcrypt_1.compare)(pass, user.password);
         if (!isMatch)
-            throw new Error('Invalid password');
+            throw new common_1.UnauthorizedException('Invalid credentials');
         const payload = { sub: user.id, username: user.name, roles: user.isAdmin ? [role_enum_1.Role.Admin] : [role_enum_1.Role.User] };
         return {
             access_token: await this.jwtService.signAsync(payload),

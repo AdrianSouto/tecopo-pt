@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+
+  tecopo-db:
+    image: postgres
+    hostname: localhost
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: tecopo
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5431:5432
