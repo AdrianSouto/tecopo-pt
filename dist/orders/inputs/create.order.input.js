@@ -9,22 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderProductInput = exports.CreateOrderInput = void 0;
+exports.CreateOrderInput = exports.OrderProductInput = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-class CreateOrderInput {
-}
-exports.CreateOrderInput = CreateOrderInput;
-__decorate([
-    (0, swagger_1.ApiProperty)({ description: "ID del usuario que hace la orden" }),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateOrderInput.prototype, "userId", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ description: "Listado de los ID de los productos de la orden" }),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", Array)
-], CreateOrderInput.prototype, "orderProducts", void 0);
 class OrderProductInput {
 }
 exports.OrderProductInput = OrderProductInput;
@@ -39,4 +26,16 @@ __decorate([
     (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], OrderProductInput.prototype, "quantity", void 0);
+class CreateOrderInput {
+}
+exports.CreateOrderInput = CreateOrderInput;
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "ID del usuario que hace la orden" }),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateOrderInput.prototype, "userId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: "Listado de los ID de los productos de la orden", type: [OrderProductInput] }),
+    __metadata("design:type", Array)
+], CreateOrderInput.prototype, "orderProducts", void 0);
 //# sourceMappingURL=create.order.input.js.map

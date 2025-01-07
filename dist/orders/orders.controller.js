@@ -48,6 +48,7 @@ __decorate([
 ], OrdersController.prototype, "getOrderById", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiBody)({ type: create_order_input_1.CreateOrderInput }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_order_input_1.CreateOrderInput]),

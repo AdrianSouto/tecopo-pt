@@ -1,18 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsPositive, IsString } from 'class-validator';
-
-export class CreateOrderInput{
-
-  @ApiProperty({description: "ID del usuario que hace la orden"})
-  @IsString()
-  userId: string;
-
-  @ApiProperty({description: "Listado de los ID de los productos de la orden"})
-  @IsString()
-  orderProducts: OrderProductInput[];
-
-}
-
 export class OrderProductInput{
   @ApiProperty({description: "Producto de la orden"})
   @IsString()
@@ -23,3 +10,15 @@ export class OrderProductInput{
   @IsPositive()
   quantity: number;
 }
+
+export class CreateOrderInput{
+
+  @ApiProperty({description: "ID del usuario que hace la orden"})
+  @IsString()
+  userId: string;
+
+  @ApiProperty({description: "Listado de los ID de los productos de la orden", type: [OrderProductInput]})
+  orderProducts: OrderProductInput[];
+
+}
+
