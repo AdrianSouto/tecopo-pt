@@ -1,6 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ProductEntity } from '../../products/dto/product.entity';
-import { UserEntity } from '../../users/dto/user.entity';
 import { IsNumber, IsPositive, IsString } from 'class-validator';
 
 export class CreateOrderInput{

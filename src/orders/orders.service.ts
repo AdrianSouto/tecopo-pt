@@ -6,7 +6,6 @@ import { OrderEntity } from './dto/order.entity';
 import { CreateOrderInput } from './inputs/create.order.input';
 import { UsersService } from '../users/users.service';
 import { ProductsService } from '../products/products.service';
-import { UserEntity } from '../users/dto/user.entity';
 import { OrderProductEntity } from './dto/order-product.entity';
 
 @Injectable()

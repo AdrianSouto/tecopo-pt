@@ -1,7 +1,6 @@
-import { Controller, Delete, Get, Param, Put, UseGuards } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { AuthGuard } from '../auth/auth.guard';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 //@UseGuards(AuthGuard)
 //@ApiBearerAuth()
