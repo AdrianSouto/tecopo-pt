@@ -28,6 +28,12 @@ $ pnpm run start:dev
 # production mode
 $ pnpm run start:prod
 ```
+## Run PostgreSQL with Docker
+
+```bash
+$ docker compose up
+```
+
 
 ## Run tests
 
